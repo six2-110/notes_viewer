@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Viewer</title>
+    <style>
+        body{
+            background-color: #e0ffff;
+        }
+        #notes_tree{
+            margin-top: 10px;
+        }
+        .folder_ul{
+            display: flex;
+            flex-direction: column;
+            min-width: 200px;
+        }
+        .folder_li{
+            display: inline-block;
+        }
+        .folder_div{
+            min-width: 500px;
+            min-height: 100px;
+            padding: 10px;
+        }
+        .folder_title{
+            position: relative;
+            text-align: left;
+            background-color: #4169e1;
+            color: #ffffff;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 15pt;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .folder_title::after{
+            content: "";
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            transform: rotate(-135deg) translateY(9px);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+        }
+        .folder_title.close::after{
+            transform: rotate(45deg) translateY(-10px);
+        }
+        .folder_inside{
+            margin-left: 10px;
+            border-left: 1px solid #000;
+            padding: 20px;
+            line-height: 1.5;
+            position: relative;
+        }
+        .folder_inside.close{
+            display: none;
+        }
+        .file{
+            min-width: 100px;
+            min-height: 100px;
+            margin: 10px;
+            font-size: 13pt;
+            background-color: #d2b48c;
+            color: #000000;
+            padding: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="notes_tree">
+        
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

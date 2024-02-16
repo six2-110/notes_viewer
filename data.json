@@ -1,0 +1,10 @@
+[
+    {"name": "テスト", "type": "note", "path": "test"},
+    {"name": "無駄", "type": "note", "path": "muda"},
+    {"name": "フォルダー1", "type": "folder", "path": "folder1", "id": "folder1", "notes": [
+        {"name": "wryyy", "type": "note", "path": "folder1/wryyy"},
+        {"name": "ニョホ", "type": "folder", "path": "folder2", "id": "folder2", "notes": [
+            {"name": "無駄だ無駄ァ！", "type": "note", "path": "folder1/folder2/ffffff"}
+        ]}
+    ]}
+]

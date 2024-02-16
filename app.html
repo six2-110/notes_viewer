@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Viewer</title>
+    <style>
+        body{
+            background-color: #e0ffff;
+        }
+        .setting_btn{
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: #000 1px solid;
+            margin-right: 10px;
+            background-color: #e6e6fa;
+            font-size: 10pt;
+        }
+        #go_index{
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+        }
+        #viewer{
+            position: relative;
+            font-size: 16pt;
+            margin: 3%;
+            padding: 2%;
+            border: #000 1px solid;
+        }
+        .hideR, .hideG{
+            font-weight: bold;
+            user-select: none;
+        }
+        .hideR{ /* 隠す */
+            color: rgba(255, 69, 0, 0);
+            background-color: rgb(255, 69, 0);
+        }
+        .hideR.show{ /* 映す */
+            color: rgb(0, 0, 0);
+            background-color: rgba(255, 69, 0, 0.3);
+            user-select: all;
+        }
+        .hideG{ /* 隠す */
+            color: rgba(60, 179, 113, 0);
+            background-color: rgb(60, 179, 113);
+        }
+        .hideG.show{ /* 映す */
+            color: rgb(0, 0, 0);
+            background-color: rgba(60, 179, 113, 0.3);
+            user-select: all;
+        }
+    </style>
+</head>
+<body>
+    <div id="btns">
+        <a href="index.html" class="setting_btn" id="go_index">ホームへ戻る</a>
+        <button type="button" class="setting_btn" id="hide_all">すべて隠す</button>
+        <button type="button" class="setting_btn" id="show_all">すべて表示</button>
+        <button type="button" class="setting_btn" id="hide_hideR">赤を隠す</button>
+        <button type="button" class="setting_btn" id="show_hideR">赤を表示</button>
+        <button type="button" class="setting_btn" id="hide_hideG">緑を隠す</button>
+        <button type="button" class="setting_btn" id="show_hideG">緑を表示</button>
+    </div>
+    <p id="url"></p>
+    <div id="viewer"></div>
+    <script src="app.js"></script>
+</body>
+</html>
