@@ -13,7 +13,7 @@ async function load_file(url, type) {
             return res;
         }
     } catch (error) {
-        console.error('error:' ,error) // エラー
+        console.error('error:', error) // エラー
     }
 }
 
@@ -22,7 +22,7 @@ function put_link(data) {
         // a.file ファイルへつながるリンク
         var new_elm = document.createElement('a');
         new_elm.href = `app.html?${data.path}`;
-        new_elm.innerText = data.name;
+        new_elm.innerText = data.title;
         new_elm.className = 'file';
         parent.appendChild(new_elm);
     }
@@ -50,7 +50,7 @@ function put_link(data) {
 
         // button.folder_title フォルダーのタイトル 押したら中のファイルが見えたり見えなかったりする
         var new_folder_title = document.createElement('button');
-        new_folder_title.innerText = elm.name;
+        new_folder_title.innerText = elm.title;
         new_folder_title.id = `folder_title_${elm.id}`;
         new_folder_title.className = 'folder_title';
         folder_li.appendChild(new_folder_title)
@@ -81,7 +81,6 @@ function put_link(data) {
 function folder_title_click(e) {
     var e_id = e.target.id;
     var folder_name = e_id.replace('folder_title_', '');
-    console.log(folder_name)
     var folder_title = document.getElementById(e_id);
     var folder_inside = document.getElementById(`folder_inside_${folder_name}`);
     folder_title.classList.toggle('close');
@@ -90,7 +89,6 @@ function folder_title_click(e) {
 
 window.onload = async () => {
     notes_data = await load_file('data.json', 'json')
-    console.log(notes_data)
     put_link(notes_data);
 
     // フォルダーのタイトルが押されたときのEventListener
