@@ -26,7 +26,7 @@
         }
         #viewer{
             position: relative;
-            font-size: 16pt;
+            font-size: clamp(5pt, 6vw, 21pt);
             margin: 3%;
             padding: 2%;
             border: #000 1px solid;
@@ -52,6 +52,20 @@
             color: rgb(0, 0, 0);
             background-color: rgba(60, 179, 113, 0.3);
             user-select: all;
+        }
+        hr{
+            height: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            border-top: 2px solid #333;
+        }
+        th, td{
+            border: 1px solid #333;
+            padding: 5px;
+        }
+        table{
+            border-collapse: collapse;
         }
     </style>
 </head>
