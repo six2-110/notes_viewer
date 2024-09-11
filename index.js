@@ -21,21 +21,23 @@ function put_link(data) {
     function put_file_link(data, parent, directory) { // ファイルへつながるリンクを設置する関数
         // a.file ファイルへつながるリンク
         var new_elm = document.createElement('a');
-		  var url = `${directory.join("/")}/${data.path}`;
+		  if (directory.length == 0) var url = data.path;
+		  else var url = `${directory.join("/")}/${data.path}`;
         new_elm.href = `app.html?${url}`;
-		  console.log(data, parent, directory, url)
         new_elm.innerText = data.title;
         new_elm.className = 'file';
         parent.appendChild(new_elm);
     }
     function put_folder_title(elm, parent, directory) { // フォルダを設置する関数
-	     var id = directory.join("-");
+	     var foo = [...directory]; foo.push(elm.folder_name);
+	     var id = foo.join("-");
         // div.folder_div フォルダー
         var new_folder = document.createElement('div');
         new_folder.className = 'folder_div';
         new_folder.id = `folder_div_${id}`;
         parent.appendChild(new_folder);
         var folder_div = document.getElementById(`folder_div_${id}`);
+		  // console.log(directory, id, elm, folder_div)
 
         // ul.folder_ul
         var new_folder_ul = document.createElement('ul');
@@ -71,14 +73,17 @@ function put_link(data) {
             if (elm.type == 'note') { // ノートのデータなら
                 put_file_link(elm, parent, directory) // リンクを作る
             } else if (elm.type == 'folder') { // フォルダのデータなら
+				    console.log(elm, parent, directory)
                 put_folder_title(elm, parent, directory); // フォルダを設置
-                parent = document.getElementById(`folder_inside_${directory.join("-")}`); // 親要素の設定
 					 var foo = [...directory]; foo.push(elm.folder_name); // ディレクトリを1つ深くするよ
-                recursion(elm.notes, parent, foo); // フォルダの中のファイルを設置していく
+                var hoge = document.getElementById(`folder_inside_${foo.join("-")}`); // 親要素の設定
+					 // console.log(elm.notes, parent, foo.join("-"));
+                recursion(elm.notes, hoge, foo); // フォルダの中のファイルを設置していく
             }
         });
     }
     var parent = document.getElementById('notes_tree'); // 親要素の初期設定
+	 console.log(data, parent, [])
     recursion(data, parent, []);
 }
 
