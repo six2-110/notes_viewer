@@ -1,6 +1,47 @@
 [
     {"title": "説明", "type": "note", "path": "example"},
     {"title": "公民", "type": "folder", "folder_name": "komin", "notes": [
-        {"title": "中学公民ワーク まとめ", "type": "note", "path": "komin/jh_matome"}
-    ]}
+        {"title": "中学公民ワーク まとめ", "type": "note", "path": "jh_matome"}
+    ]},
+    {"title": "地理総合", "type": "folder", "folder_name": "general_geo", "notes": [
+        {"title": "歴史総合ノート第一章", "type": "note", "path": "note1"}
+    ]},
+	 {"title": "歴史総合ノート", "type": "folder", "folder_name": "rekisou_note", "notes": [
+	     {"title": "第１章　近代化と私たち", "type": "folder", "folder_name": "Chapter1", "notes": [
+		     {"title": "第１節　18世紀のアジアの繁栄", "type": "folder", "folder_name": "Section1", "notes": [
+			     {"title": "1. 18世紀の東アジアの政治と国際秩序", "type": "note", "path": "1"},
+				  {"title": "2. 18世紀の東アジアの経済と社会", "type": "note", "path": "2"}
+			  ]},
+			  {"title": "第２節　産業革命と市民革命", "type": "folder", "folder_name": "Section2", "notes": [
+			     {"title": "3. 国際商業の覇権争いと大西洋三角貿易", "type": "note", "path": "3"},
+				  {"title": "4. 農業社会から工業社会へ―産業革命", "type": "note", "path": "4"},
+				  {"title": "5. アメリカ独立革命", "type": "note", "path": "5"},
+				  {"title": "6. フランス革命", "type": "note", "path": "6"},
+				  {"title": "7. イギリスに挑戦したナポレオン", "type": "note", "path": "7"},
+				  {"title": "8. 大西洋を超えて広がった革命", "type": "note", "path": "8"}
+			  ]},
+			  {"title": "第３節　イギリスの繁栄と国民国家の拡大", "type": "folder", "folder_name": "Section3", "notes": [
+			     {"title": "9. イギリスの繁栄", "type": "note", "path": "9"},
+				  {"title": "10. 後発国による「上からの近代化」", "type": "note", "path": "10"},
+				  {"title": "11. ロシアの近代化と南下政策", "type": "note", "path": "11"},
+				  {"title": "12. アメリカ合衆国の膨張", "type": "note", "path": "12"}
+			  ]},
+			  {"title": "第４節　アジア諸国の変貌と日本の開国", "type": "folder", "folder_name": "Section4", "notes": [
+			     {"title": "13. オスマン帝国の衰退と西アジア", "type": "note", "path": "13"},
+				  {"title": "14. 南アジアと東南アジアの植民地化", "type": "note", "path": "14"},
+				  {"title": "15. 東アジアの動揺", "type": "note", "path": "15"},
+				  {"title": "16. 東アジアの情勢と改革", "type": "note", "path": "16"},
+				  {"title": "17. 明治初期日本の外交と東アジアの国際秩序", "type": "note", "path": "17"},
+				  {"title": "18. 日本の立憲国家への道のり", "type": "note", "path": "18"}
+			  ]},
+			  {"title": "第５節　帝国主義の発展", "type": "folder", "folder_name": "Section5", "notes": [
+			     {"title": "19. 帝国主義の時代", "type": "note", "path": "19"},
+				  {"title": "20. 列強の世界政策", "type": "note", "path": "20"},
+				  {"title": "21. 日清戦争と中国分割", "type": "note", "path": "21"},
+				  {"title": "22. 日露戦争とアジア", "type": "note", "path": "22"},
+				  {"title": "23. 日本の工業化と社会主義運動の高揚", "type": "note", "path": "23"},
+				  {"title": "24. 日本の帝国主義と東アジア", "type": "note", "path": "24"}
+			  ]}
+		  ]}
+	 ]}
 ]

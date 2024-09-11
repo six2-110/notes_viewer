@@ -18,63 +18,68 @@ async function load_file(url, type) {
 }
 
 function put_link(data) {
-    function put_file_link(data, parent) { // ファイルへつながるリンクを設置する関数
+    function put_file_link(data, parent, directory) { // ファイルへつながるリンクを設置する関数
         // a.file ファイルへつながるリンク
         var new_elm = document.createElement('a');
-        new_elm.href = `app.html?${data.path}`;
+		  var url = `${directory.join("/")}/${data.path}`;
+        new_elm.href = `app.html?${url}`;
+		  console.log(data, parent, directory, url)
         new_elm.innerText = data.title;
         new_elm.className = 'file';
         parent.appendChild(new_elm);
     }
-    function put_folder_title(elm, parent) { // フォルダを設置する関数
+    function put_folder_title(elm, parent, directory) { // フォルダを設置する関数
+	     var id = directory.join("-");
         // div.folder_div フォルダー
         var new_folder = document.createElement('div');
         new_folder.className = 'folder_div';
-        new_folder.id = `folder_div_${elm.id}`;
+        new_folder.id = `folder_div_${id}`;
         parent.appendChild(new_folder);
-        var folder_div = document.getElementById(`folder_div_${elm.id}`);
+        var folder_div = document.getElementById(`folder_div_${id}`);
 
         // ul.folder_ul
         var new_folder_ul = document.createElement('ul');
         new_folder_ul.className = 'folder_ul';
-        new_folder_ul.id = `folder_ul_${elm.id}`;
+        new_folder_ul.id = `folder_ul_${id}`;
         folder_div.appendChild(new_folder_ul);
-        var folder_ul = document.getElementById(`folder_ul_${elm.id}`);
+        var folder_ul = document.getElementById(`folder_ul_${id}`);
 
         // li.folder_li
         var new_folder_li = document.createElement('li');
         new_folder_li.className = 'folder_li';
-        new_folder_li.id = `folder_li_${elm.id}`;
+        new_folder_li.id = `folder_li_${id}`;
         folder_ul.appendChild(new_folder_li);
-        var folder_li = document.getElementById(`folder_li_${elm.id}`);
+        var folder_li = document.getElementById(`folder_li_${id}`);
 
         // button.folder_title フォルダーのタイトル 押したら中のファイルが見えたり見えなかったりする
         var new_folder_title = document.createElement('button');
         new_folder_title.innerText = elm.title;
-        new_folder_title.id = `folder_title_${elm.id}`;
+        new_folder_title.id = `folder_title_${id}`;
         new_folder_title.className = 'folder_title';
         folder_li.appendChild(new_folder_title)
 
         // div.folder_inside フォルダーの中身
         var new_folder_inside = document.createElement('div');
         new_folder_inside.className = 'folder_inside';
-        new_folder_inside.id = `folder_inside_${elm.id}`;
+        new_folder_inside.id = `folder_inside_${id}`;
         folder_li.appendChild(new_folder_inside);
     }
 
-    function recursion(data, parent) {
+    // 再帰
+    function recursion(data, parent, directory) {
         data.forEach(elm => {
-            if (elm.type == 'note') {
-                put_file_link(elm, parent)
-            } else if (elm.type == 'folder') {
-                put_folder_title(elm, parent);
-                parent = document.getElementById(`folder_inside_${elm.id}`);
-                recursion(elm.notes, parent);
+            if (elm.type == 'note') { // ノートのデータなら
+                put_file_link(elm, parent, directory) // リンクを作る
+            } else if (elm.type == 'folder') { // フォルダのデータなら
+                put_folder_title(elm, parent, directory); // フォルダを設置
+                parent = document.getElementById(`folder_inside_${directory.join("-")}`); // 親要素の設定
+					 var foo = [...directory]; foo.push(elm.folder_name); // ディレクトリを1つ深くするよ
+                recursion(elm.notes, parent, foo); // フォルダの中のファイルを設置していく
             }
         });
     }
     var parent = document.getElementById('notes_tree'); // 親要素の初期設定
-    recursion(data, parent);
+    recursion(data, parent, []);
 }
 
 // フォルダーのタイトルが押されたときの処理

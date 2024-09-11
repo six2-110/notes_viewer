@@ -49,9 +49,16 @@ window.onload = async () => {
     for (let i = 0; i < path.length-1; i++) {
         foo = foo.notes.find((elm) => elm.folder_name == path[i]);
     }
-    note_data = foo.notes.find((note) => note.path == url_search);
+	 // note_data探し
+	 var directory = url_search.split("/");
+	 var parent = notes_data;
+	 // サブディレクトリ取得
+	 for (let i=0; i<directory.length-1; i++) {
+	     parent = parent.find((folder) => folder.folder_name == directory[i]).notes;
+	 }
+	 note_data = parent.find((note) => note.path == directory.pop());
 
-    document.getElementById('url').innerText = `${note_data.title} (path:${note_data.path})`; // noteのurlを表示
+    document.getElementById('url').innerText = `${note_data.title} (path:${url_search})`; // noteのurlを表示
     document.getElementsByTagName('title')[0].innerText = `${note_data.title} | Notes Viewer`;
 
     hide_classes.forEach(className => {
