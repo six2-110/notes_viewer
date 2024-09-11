@@ -57,12 +57,14 @@ function put_link(data) {
         var new_folder_title = document.createElement('button');
         new_folder_title.innerText = elm.title;
         new_folder_title.id = `folder_title_${id}`;
-        new_folder_title.className = 'folder_title';
-        folder_li.appendChild(new_folder_title)
+        new_folder_title.classList = 'folder_title';
+		  new_folder_title.classList.add("close"); // デフォルトで閉じておく
+        folder_li.appendChild(new_folder_title);
 
         // div.folder_inside フォルダーの中身
         var new_folder_inside = document.createElement('div');
         new_folder_inside.className = 'folder_inside';
+		  new_folder_inside.classList.add("close"); // デフォルトで閉じておく
         new_folder_inside.id = `folder_inside_${id}`;
         folder_li.appendChild(new_folder_inside);
     }
