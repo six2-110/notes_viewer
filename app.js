@@ -44,11 +44,6 @@ window.onload = async () => {
     $viewer.innerHTML = view_html; // div#viewer にhtmlを反映させる
 
     notes_data = await load_file('data.json', 'json'); // notesのデータをjsonで取得
-    var path = url_search.split('/')
-    var foo = {notes: notes_data};
-    for (let i = 0; i < path.length-1; i++) {
-        foo = foo.notes.find((elm) => elm.folder_name == path[i]);
-    }
 	 // note_data探し
 	 var directory = url_search.split("/");
 	 var parent = notes_data;
@@ -56,7 +51,8 @@ window.onload = async () => {
 	 for (let i=0; i<directory.length-1; i++) {
 	     parent = parent.find((folder) => folder.folder_name == directory[i]).notes;
 	 }
-	 note_data = parent.find((note) => note.path == directory.pop());
+	 var pop = directory.pop()
+	 note_data = parent.find((note) => note.path == pop); // note_data 取得
 
     document.getElementById('url').innerText = `${note_data.title} (path:${url_search})`; // noteのurlを表示
     document.getElementsByTagName('title')[0].innerText = `${note_data.title} | Notes Viewer`;

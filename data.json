@@ -3,9 +3,6 @@
     {"title": "公民", "type": "folder", "folder_name": "komin", "notes": [
         {"title": "中学公民ワーク まとめ", "type": "note", "path": "jh_matome"}
     ]},
-    {"title": "地理総合", "type": "folder", "folder_name": "general_geo", "notes": [
-        {"title": "歴史総合ノート第一章", "type": "note", "path": "note1"}
-    ]},
 	 {"title": "歴史総合ノート", "type": "folder", "folder_name": "rekisou_note", "notes": [
 	     {"title": "第１章　近代化と私たち", "type": "folder", "folder_name": "Chapter1", "notes": [
 		     {"title": "第１節　18世紀のアジアの繁栄", "type": "folder", "folder_name": "Section1", "notes": [
